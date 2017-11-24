@@ -13,4 +13,6 @@ public class AddressBookSpringBootSecurityAngularjsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AddressBookSpringBootSecurityAngularjsApplication.class, args);
 	}
+	
+	
 }

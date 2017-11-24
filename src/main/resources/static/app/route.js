@@ -30,9 +30,21 @@ angular.module('AddressBook').config(function($stateProvider, $urlRouterProvider
 				controller : 'UsersController',
 			}
 		}
+	}).state('gym-users', {
+		parent : 'nav',
+		url : '/gym-users',
+//		data : {
+//			role : 'ADMIN'
+//		},
+		views : {
+			'content@' : {
+				templateUrl : 'app/views/gym-users.html',
+				controller : 'GymUsersController',
+			}
+		}
 	}).state('address', {
 		parent : 'nav',
-		url : '/',
+		url : '/address',
 		views : {
 			'content@' : {
 				templateUrl : 'app/views/address.html',

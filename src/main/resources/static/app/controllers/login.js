@@ -22,7 +22,7 @@ angular.module('AddressBook')
 				$http.defaults.headers.common['Authorization'] = 'Basic ' + base64Credential;
 				AuthService.user = res;
 				$rootScope.$broadcast('LoginSuccessful');
-				$state.go('address');
+				$state.go('gym-users');
 			} else {
 				$scope.message = 'Authetication Failed !';
 			}

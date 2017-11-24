@@ -46,7 +46,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				// ignoring the "/", "/index.html", "/app/**", "/register",
 				// "/favicon.ico"
-				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico").permitAll()
+				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico","console/*").permitAll()
 				// authenticate all remaining URLS
 				.anyRequest().fullyAuthenticated().and()
 				// enabling the basic authentication
@@ -56,6 +56,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				// disabling the CSRF - Cross Site Request Forgery
 				.csrf().disable();
+		
+		http.headers().frameOptions().disable();
 	}
 
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Address Book</title>
+<title>Max Burn</title>
 
 <!-- importing the bootstrap styles -->
 <link rel="stylesheet"
@@ -20,8 +20,9 @@
 	height: 300px;
 	overflow-y: auto;
 }
+
 </style>
-<body ng-app="AddressBook">
+<body ng-app="AddressBook"  ng-style="{'background-image':'url(gym.jpg)', 'background-repeat': 'repeat' ,'background-size': '100% 800px' }">
 
 	<!-- View for adding the navigation bar -->
 	<div ui-view="nav"></div>
@@ -56,6 +57,7 @@
 	<script type="text/javascript" src="app/controllers/nav.js"></script>
 	<script type="text/javascript" src="app/controllers/login.js"></script>
 	<script type="text/javascript" src="app/controllers/users.js"></script>
+	<script type="text/javascript" src="app/controllers/gym-users.js"></script>
 	<script type="text/javascript" src="app/controllers/address.js"></script>
 	<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
 	<script type="text/javascript" src="app/controllers/access-denied.js"></script>

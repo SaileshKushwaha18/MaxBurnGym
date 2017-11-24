@@ -19,11 +19,17 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" ui-sref="address">Address Book </a>
+			<a class="navbar-brand" ui-sref="gym-users">Max Burn</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li ng-show="user.principal.name"><a ui-sref="users">Users</a></li>
+				<li ng-show="user.principal.role === 'ADMIN'"><a ui-sref="users">Users</a></li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li ng-show="user.principal.name"><a ui-sref="gym-users">GymUsers</a></li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li ng-show="user.principal.name"><a ui-sref="address">GymUsers Address</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
@@ -31,7 +37,7 @@
 							{{user.principal.name}}</span> <span ng-click="logout()" href=""
 						class="logout">Logout</span>
 				</a></li>
-				<li ng-show="!user.principal.name"><a ui-sref="register">Register</a></li>
+<!-- 				<li ng-show="!user.principal.name"><a ui-sref="register">Register</a></li> -->
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

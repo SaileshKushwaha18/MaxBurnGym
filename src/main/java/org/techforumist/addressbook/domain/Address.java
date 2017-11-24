@@ -1,11 +1,17 @@
 package org.techforumist.addressbook.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Sarath Muraleedharan
@@ -24,6 +30,10 @@ public class Address {
 	@JoinColumn(name = "owner")
 	private AppUser owner;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+	private List<GymUser> gymUser;
+	
 	public Long getId() {
 		return id;
 	}
@@ -54,6 +64,14 @@ public class Address {
 
 	public void setOwner(AppUser owner) {
 		this.owner = owner;
+	}
+
+	public List<GymUser> getGymUser() {
+		return gymUser;
+	}
+
+	public void setGymUser(List<GymUser> gymUser) {
+		this.gymUser = gymUser;
 	}
 
 }
