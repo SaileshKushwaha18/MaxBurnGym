@@ -1,5 +1,6 @@
-package org.techforumist.addressbook.domain;
+package org.techforumist.maxburn.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,12 +15,16 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @author Sarath Muraleedharan
+ * @author Sailesh
  *
  */
 @Entity
-public class Address {
+public class Address implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

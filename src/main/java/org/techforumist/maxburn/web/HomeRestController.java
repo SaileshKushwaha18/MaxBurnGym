@@ -1,4 +1,4 @@
-package org.techforumist.addressbook.web;
+package org.techforumist.maxburn.web;
 
 import java.security.Principal;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.techforumist.addressbook.domain.AppUser;
-import org.techforumist.addressbook.repository.AppUserRepository;
+import org.techforumist.maxburn.domain.AppUser;
+import org.techforumist.maxburn.repository.AppUserRepository;
 
 /**
  * @author Sarath Muraleedharan

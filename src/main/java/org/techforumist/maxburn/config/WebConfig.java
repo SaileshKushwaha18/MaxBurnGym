@@ -1,4 +1,4 @@
-package org.techforumist.addressbook.config;
+package org.techforumist.maxburn.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;

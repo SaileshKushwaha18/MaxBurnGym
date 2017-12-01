@@ -42,6 +42,18 @@ angular.module('AddressBook').config(function($stateProvider, $urlRouterProvider
 				controller : 'GymUsersController',
 			}
 		}
+	}).state('exercise', {
+		parent : 'nav',
+		url : '/exercise',
+//		data : {
+//			role : 'ADMIN'
+//		},
+		views : {
+			'content@' : {
+				templateUrl : 'app/views/exercise.html',
+				controller : 'ExerciseController',
+			}
+		}
 	}).state('address', {
 		parent : 'nav',
 		url : '/address',

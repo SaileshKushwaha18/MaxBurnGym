@@ -1,4 +1,4 @@
-package org.techforumist.addressbook;
+package org.techforumist.maxburn;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,11 +1,10 @@
-package org.techforumist.addressbook.web;
+package org.techforumist.maxburn.web;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.techforumist.addressbook.domain.GymUser;
-import org.techforumist.addressbook.repository.AddressRepository;
-import org.techforumist.addressbook.repository.GymUserRepository;
+import org.techforumist.maxburn.domain.GymUser;
+import org.techforumist.maxburn.repository.AddressRepository;
+import org.techforumist.maxburn.repository.ExerciseRepository;
+import org.techforumist.maxburn.repository.GymUserRepository;
 
 /**
  * @author Sarath Muraleedharan
@@ -29,6 +29,9 @@ public class GymUserRestController {
 
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private ExerciseRepository exerciseRepository;
 	
 	@RequestMapping(value = "/gym-users", method = RequestMethod.GET)
 	public List<GymUser> users() {
@@ -68,6 +71,14 @@ public class GymUserRestController {
 		if (gymUserRepository.findOneByUserName(gymUser.getUserName()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
+		
+		if(gymUser.getAddress() !=null){
+			gymUser.setAddress(addressRepository.save(gymUser.getAddress()));
+		}
+//		if(gymUser.getExercise() !=null){
+//			System.out.println("the value of ExcerciseID"+ gymUser.getExercise().getId());
+//		}
+		
 		return new ResponseEntity<GymUser>(gymUserRepository.save(gymUser), HttpStatus.CREATED);
 	}
 
@@ -82,6 +93,9 @@ public class GymUserRestController {
 		if(gymUser.getAddress() !=null){
 			gymUser.setAddress(addressRepository.save(gymUser.getAddress()));
 		}
+//		if(gymUser.getExercise() !=null){
+//			gymUser.setExercise(exerciseRepository.save(gymUser.getExercise()));
+//		}
 		return gymUserRepository.save(gymUser);
 	}
 

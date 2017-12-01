@@ -1,12 +1,12 @@
-package org.techforumist.addressbook.config;
+package org.techforumist.maxburn.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.techforumist.addressbook.domain.AppUser;
-import org.techforumist.addressbook.repository.AppUserRepository;
+import org.techforumist.maxburn.domain.AppUser;
+import org.techforumist.maxburn.repository.AppUserRepository;
 
 /**
  * This Service class for providing the user credentials from the database.

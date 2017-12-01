@@ -1,5 +1,6 @@
-package org.techforumist.addressbook.domain;
+package org.techforumist.maxburn.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,50 +8,75 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ColumnDefault;
 
+/**
+ * @author Sailesh
+ *
+ */
 @Entity
-public class GymUser {
-	private static final long serialVersionUID = 1L;
+public class GymUser implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String firstName;
-	
+
 	private String middleName;
-	
+
 	private String lastName;
-	
+
 	private String emailId;
-	
+
 	private Date joiningDate;
-	
+
 	private Date dob;
-	
+
 	private Date feeSubmitDate;
-	
+
 	private Date feeDueDate;
-	
+
 	private String gender;
-	
+
 	private String phone;
-	
+
+	@SuppressWarnings("unused")
 	private String userName;
 
-	
-	@ManyToOne
-	@JoinColumn(name = "address")
+	@OneToOne
+	@JoinColumn(name = "addressId")
 	private Address address;
-	
+
 	@ColumnDefault("'UNPAID'")
 	private String feeStatus;
 
 	@ColumnDefault("'white'")
 	private String feeStatusColor;
+
+	private String exercise;
+	
+	//Fee Details
+	
+	private Integer packages;   // Defines duration of package
+	
+	private Integer extraPackages;   // Defines extra duration on the top of package.
+	
+	private Integer totalFee;
+	
+	private Integer submittedFee;
+	
+	private Integer balanceFee;
+	
+	private Integer feeDiscount; // Defines Discount given to the user.
+	
+	private Date packageStartDate;
+
+	private Date packageEndDate;
 	
 	public Long getId() {
 		return id;
@@ -141,11 +167,12 @@ public class GymUser {
 	}
 
 	public String getUserName() {
-		return this.getFirstName() +','+ this.getLastName();
+		setUserName(this.getFirstName() + ',' + this.getLastName());
+		return this.getFirstName() + ',' + this.getLastName();
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.userName = this.getFirstName() + ',' + this.getLastName();
 	}
 
 	public Address getAddress() {
@@ -170,7 +197,78 @@ public class GymUser {
 
 	public void setFeeStatusColor(String feeStatusColor) {
 		this.feeStatusColor = feeStatusColor;
-	}	
-	
-	
+	}
+
+	public String getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(String exercise) {
+		this.exercise = exercise;
+	}
+
+	public Integer getPackages() {
+		return packages;
+	}
+
+	public void setPackages(Integer packages) {
+		this.packages = packages;
+	}
+
+	public Integer getExtraPackages() {
+		return extraPackages;
+	}
+
+	public void setExtraPackages(Integer extraPackages) {
+		this.extraPackages = extraPackages;
+	}
+
+	public Integer getTotalFee() {
+		return totalFee;
+	}
+
+	public void setTotalFee(Integer totalFee) {
+		this.totalFee = totalFee;
+	}
+
+	public Integer getSubmittedFee() {
+		return submittedFee;
+	}
+
+	public void setSubmittedFee(Integer submittedFee) {
+		this.submittedFee = submittedFee;
+	}
+
+	public Integer getBalanceFee() {
+		return balanceFee;
+	}
+
+	public void setBalanceFee(Integer balanceFee) {
+		this.balanceFee = balanceFee;
+	}
+
+	public Integer getFeeDiscount() {
+		return feeDiscount;
+	}
+
+	public void setFeeDiscount(Integer feeDiscount) {
+		this.feeDiscount = feeDiscount;
+	}
+
+	public Date getPackageStartDate() {
+		return packageStartDate;
+	}
+
+	public void setPackageStartDate(Date packageStartDate) {
+		this.packageStartDate = packageStartDate;
+	}
+
+	public Date getPackageEndDate() {
+		return packageEndDate;
+	}
+
+	public void setPackageEndDate(Date packageEndDate) {
+		this.packageEndDate = packageEndDate;
+	}
+
 }

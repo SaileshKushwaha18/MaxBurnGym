@@ -12,95 +12,246 @@
 			</div>
 			<div class="panel-body">
 				<div class="col-md-12">
-
 					<div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
 					<form ng-submit="submitGym()" name="gymuserForm" novalidate>
-
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.firstName.$invalid && gymuserForm.firstName.$dirty }">
-							<label for="firstName">FirstName:</label> <input type="text" required
-								class="form-control" ng-model="gymUser.firstName" id="firstName"
-								name="firstName">
+						<div class="form-group col-md-12" >
+							<legend>PersonnelDetails</legend>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.firstName.$invalid && gymuserForm.firstName.$dirty }">
+								<label for="firstName">FirstName:</label> <input type="text" required
+									class="form-control" ng-model="gymUser.firstName" id="firstName"
+									name="firstName">
+							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.middleName.$invalid && gymuserForm.middleName.$dirty }">
+								<label for="middleName">MiddleName:</label> <input type="text"
+									class="form-control" ng-model="gymUser.middleName"
+									id="middleName" name="middleName">
+							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.lastName.$invalid && gymuserForm.lastName.$dirty }">
+								<label for="lastName">LastName:</label> <input type="text"
+									required class="form-control" ng-model="gymUser.lastName"
+									id="lastName" name="lastName">
+							</div>
+							
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.dob.$invalid  && gymuserForm.dob.$dirty}">
+								<label for="dob">DOB:</label> <input type="date"  value = "{{dob}}"
+									class="form-control" ng-model="gymUser.dob"
+									id="dob" name="dob">
+							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.gender.$invalid && gymuserForm.gender.$dirty }">
+								<label for="role">Gender:</label> <select required
+									class="form-control" ng-model="gymUser.gender" id="gender"
+									name="gender">
+									<option value="MALE">MALE</option>
+									<option value="FEMALE">FEMALE</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.joiningDate.$invalid && gymuserForm.joiningDate.$dirty}">
+								<label for="joiningDate">JoiningDate:</label> <input type="date" value ="{{joiningDate}}"
+									class="form-control" ng-model="gymUser.joiningDate"
+									id="joiningDate" name="joiningDate">
+									
+							</div>
+	
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.feeDueDate.$invalid && gymuserForm.feeDueDate.$dirty}">
+								<label for="feeDueDate">FeeDueDate:</label> <input type="date" value ="{{feeDueDate}}"
+									class="form-control" ng-model="gymUser.feeDueDate"
+									id="feeDueDate" name="feeDueDate">
+									
+							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.feeSubmitDate.$invalid && gymuserForm.feeSubmitDate.$dirty}">
+								<label for="dob">FeeSubmitDate:</label> <input type="date" ng-disabled="true"
+									class="form-control" ng-model="gymUser.feeSubmitDate" value="{{feeSubmitDate}}"
+									id="feeSubmitDate" name="feeSubmitDate">
+							</div>	
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.emailId.$invalid && gymuserForm.emailId.$dirty }">
+								<label for="emailId">Email:</label> <input type="email"
+									 class="form-control" ng-model="gymUser.emailId"
+									id="emailId" name="emailId">
+							</div>	
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.phone.$invalid && gymuserForm.phone.$dirty }">
+								<label for="phone">MobileNo:</label> <input type="tel" ng-minlength="10" ng-maxlength="10"
+									 required class="form-control" ng-model="gymUser.phone"
+									id="phone" name="phone">
+							</div>			
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.feeStatus.$invalid && gymuserForm.feeStatus.$dirty }">
+								<label for="role">FeeStatus:</label> <select required ng-change="onChangeFeeStatus(gymUser.feeStatus);"
+									class="form-control" ng-model="gymUser.feeStatus" id="feeStatus"
+									name="feeStatus">
+									<option value='PAID'>PAID</option>
+									<option value='UNPAID'>UNPAID</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4" 
+								ng-class="{ 'has-error': gymuserForm.feeStatusColor.$invalid && gymuserForm.feeStatusColor.$dirty }">
+								<label for="feeStatusColor">FeeStatusColor:</label> <input type="text" ng-disabled="true"
+									class="form-control" ng-model="gymUser.feeStatusColor"
+									id="feeStatusColor" name="feeStatusColor">
+							</div>
 						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.middleName.$invalid && gymuserForm.middleName.$dirty }">
-							<label for="middleName">MiddleName:</label> <input type="text"
-								class="form-control" ng-model="gymUser.middleName"
-								id="middleName" name="middleName">
+						<div class="form-group col-md-12" >
+						    <legend>Exercise</legend>
+						    <div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.exerciseType.$invalid && gymuserForm.exerciseType.$dirty }">
+								<label for="exerciseType">ExerciseType:</label> <select required 
+									class="form-control" ng-model="gymUser.exerciseType" ng-change="onChangeSelect(gymUser.exerciseType)"  id="exerciseType" 
+									name="exerciseType">
+									<option ng-repeat="x in exercises">{{x.type}}</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4" 
+								ng-class="{ 'has-error': gymuserForm.exerciseFee.$invalid && gymuserForm.exerciseFee.$dirty }">
+								<label for="exerciseFee">ExerciseFee:</label> <input type="text" ng-disabled="true"
+									class="form-control" ng-model="gymUser.exerciseFee"
+									id="exerciseFee" name="exerciseFee">
+							</div>
 						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.lastName.$invalid && gymuserForm.lastName.$dirty }">
-							<label for="lastName">LastName:</label> <input type="text"
-								required class="form-control" ng-model="gymUser.lastName"
-								id="lastName" name="lastName">
+						<div class="form-group col-md-12" >
+						    <legend>FeeDetails</legend>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.packages.$invalid && gymuserForm.packages.$dirty }">
+								<label for="packages">Package:</label><input type="number" required ng-min="1" ng-max="12" ng-maxlength="2"
+								class="form-control" ng-model="gymUser.packages" ng-change="gymFeeCalculation(gymUser.exerciseFee);"
+								id="packages" name="packages"> 
+							</div>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.extraPackages.$invalid && gymuserForm.extraPackages.$dirty }">
+								<label for="extraPackages">ExtraPackage:</label><input type="number" required ng-min="0" ng-max="6" ng-maxlength="2"
+								class="form-control" ng-model="gymUser.extraPackages"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
+								id="extraPackages" name="extraPackages"> 
+							</div>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.totalFee.$invalid && gymuserForm.totalFee.$dirty }">
+								<label for="totalFee">TotalFee:</label><input type="number" required ng-disabled="true"
+								class="form-control" ng-model="gymUser.totalFee"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
+								id="totalFee" name="totalFee"> 
+							</div>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.submittedFee.$invalid && gymuserForm.submittedFee.$dirty }">
+								<label for="submittedFee">SubmittedFee:</label><input type="number" required
+								class="form-control" ng-model="gymUser.submittedFee"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
+								id="submittedFee" name="submittedFee"> 
+							</div>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.feeDiscount.$invalid && gymuserForm.feeDiscount.$dirty }">
+								<label for="feeDiscount">FeeDiscount:</label><input type="number" required
+								class="form-control" ng-model="gymUser.feeDiscount"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
+								id="feeDiscount" name="feeDiscount"> 
+							</div>
+							<div class="form-group col-md-4"  
+								ng-class="{ 'has-error': gymuserForm.balanceFee.$invalid && gymuserForm.balanceFee.$dirty }">
+								<label for="balanceFee">BalanceFee:</label><input type="number" required  ng-disabled="true"
+								class="form-control" ng-model="gymUser.balanceFee"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
+								id="balanceFee" name="balanceFee"> 
+							</div>
 						</div>
-						
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.dob.$invalid  && gymuserForm.dob.$dirty}">
-							<label for="dob">DOB:</label> <input type="date"  value = "{{dob}}"
-								class="form-control" ng-model="gymUser.dob"
-								id="dob" name="dob">
+						<div class="form-group col-md-4">
+							<button type="submit" class="btn btn-default"
+								ng-disabled="gymuserForm.$invalid">{{buttonText}}</button>
 						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.gender.$invalid && gymuserForm.gender.$dirty }">
-							<label for="role">Gender:</label> <select required
-								class="form-control" ng-model="gymUser.gender" id="gender"
-								name="gender">
-								<option value="MALE">MALE</option>
-								<option value="FEMALE">FEMALE</option>
-							</select>
-						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.joiningDate.$invalid && gymuserForm.joiningDate.$dirty}">
-							<label for="joiningDate">JoiningDate:</label> <input type="date" value ="{{joiningDate}}"
-								class="form-control" ng-model="gymUser.joiningDate"
-								id="joiningDate" name="joiningDate">
-								
-						</div>
-
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.feeDueDate.$invalid && gymuserForm.feeDueDate.$dirty}">
-							<label for="feeDueDate">FeeDueDate:</label> <input type="date" value ="{{feeDueDate}}"
-								class="form-control" ng-model="gymUser.feeDueDate"
-								id="feeDueDate" name="feeDueDate">
-								
-						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.feeSubmitDate.$invalid && gymuserForm.feeSubmitDate.$dirty}">
-							<label for="dob">FeeSubmitDate:</label> <input type="date" ng-disabled="true"
-								class="form-control" ng-model="gymUser.feeSubmitDate" value="{{feeSubmitDate}}"
-								id="feeSubmitDate" name="feeSubmitDate">
-						</div>	
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.emailId.$invalid && gymuserForm.emailId.$dirty }">
-							<label for="emailId">Email:</label> <input type="email"
-								 class="form-control" ng-model="gymUser.emailId"
-								id="emailId" name="emailId">
-						</div>	
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.phone.$invalid && gymuserForm.phone.$dirty }">
-							<label for="phone">MobileNo:</label> <input type="tel" ng-minlength="10" ng-maxlength="10"
-								 required class="form-control" ng-model="gymUser.phone"
-								id="phone" name="phone">
-						</div>			
-						<div class="form-group"
-							ng-class="{ 'has-error': gymuserForm.feeStatus.$invalid && gymuserForm.gender.$dirty }">
-							<label for="role">FeeStatus:</label> <select required
-								class="form-control" ng-model="gymUser.feeStatus" id="feeStatus"
-								name="feeStatus">
-								<option value='PAID'>PAID</option>
-								<option value='UNPAID'>UNPAID</option>
-							</select>
-						</div>
-						<div class="form-group" 
-							ng-class="{ 'has-error': gymuserForm.feeStatusColor.$invalid && gymuserForm.feeStatusColor.$dirty }">
-							<label for="feeStatusColor">FeeStatusColor:</label> <input type="text" ng-disabled="true"
-								class="form-control" ng-model="gymUser.feeStatusColor"
-								id="feeStatusColor" name="feeStatusColor">
-						</div>
-						<button type="submit" class="btn btn-default"
-							ng-disabled="gymuserForm.$invalid">{{buttonText}}</button>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-sm-12" ng-show="viewButton">
+		<div class="panel panel-default">
+			<div class="panel-heading">GymUser Detail
+				<button type="button" class="close" ng-click="close()">&times;</button>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					<div class="form-group col-md-12" >
+						<legend>PersonnelDetails</legend>		
+						<div class="form-group col-md-4">
+							<label for="firstName">FirstName:</label> {{gymUser.firstName}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="middleName">MiddleName:</label> {{gymUser.middleName}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="lastName">LastName:</label> {{gymUser.lastName}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dob">DOB:</label> {{gymUser.dob | date:format: 'dd-MM-yyyy'}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="gender">Gender:</label> {{gymUser.gender}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="joiningDate">JoiningDate:</label> {{gymUser.joiningDate | date:format: 'dd-MM-yyyy'}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="feeDueDate">FeeDueDate:</label> {{gymUser.feeDueDate | date:format: 'dd-MM-yyyy'}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="feeSubmitDate">FeeSubmitDate:</label> {{gymUser.feeSubmitDate | date:format: 'dd-MM-yyyy'}}
+						</div>	
+						<div class="form-group col-md-4">
+							<label for="emailId">Email:</label> {{gymUser.emailId}}
+						</div>	
+						<div class="form-group col-md-4">
+							<label for="phone">MobileNo:</label> {{gymUser.phone}}
+						</div>			
+						<div class="form-group col-md-4">
+							<label for="role">FeeStatus:</label> <span class="{{gymUser.feeStatusColor}}">{{gymUser.feeStatus}}</span>
+						</div>
+						<div class="form-group col-md-4" >
+							<label for="feeStatusColor">FeeStatusColor:</label> {{gymUser.feeStatusColor}}
+						</div>
+					</div>
+
+					<div class="form-group col-md-12" >
+					    <legend>Exercise</legend>
+					    <div class="form-group col-md-4" >
+							<label for="type">ExerciseType:</label> {{type}}
+						</div>
+						<div class="form-group col-md-4" >
+							<label for="fee">ExerciseFee:</label> {{fee}}
+						</div>
+						<div class="form-group col-md-4" >
+							<label for="packageStartDate">ExerciseStartDate:</label> {{gymUser.packageStartDate  | date:format: 'dd-MM-yyyy'}}
+						</div>
+						<div class="form-group col-md-4" >
+							<label for="packageEndDate">ExerciseEndDate:</label> {{gymUser.packageEndDate  | date:format: 'dd-MM-yyyy'}}
+						</div>
+					</div>
+					<div class="col-md-12">
+						<legend>FeeDetails</legend>
+						<div class="form-group col-md-4">
+							<label for="packages">Package:</label> {{gymUser.packages}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="extraPackages">ExtraPackage:</label> {{gymUser.extraPackages}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="totalFee">TotalFee:</label> {{gymUser.totalFee}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="submittedFee">SubmittedFee:</label> {{gymUser.submittedFee}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="feeDiscount">FeeDiscount:</label> {{gymUser.feeDiscount}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="balanceFee">BalanceFee:</label> {{gymUser.balanceFee}}
+						</div>
+					</div>
+					<div class="form-group col-md-12" >
+					    <legend>Address</legend>
+						<label for="address">Address:</label> {{gymUser.address.address}}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -109,24 +260,31 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="row">
-					<div class="col-sm-4">
-						GymUsers
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							GymUsers		
+						</div>
+						<div class="col-sm-4">
+							<input class="glyphicon glyphicon-search form-control" type="text" ng-model="search" placeholder="Search by UserName"></input>
+							<i class='fa fa-search' id="search"></i>
+						</div>
+						<div class="col-sm-1">
+<!-- 							<button class="btn btn-default" ng-json-export-excel data="gymusers" report-fields="{id: 'UserID', userName: 'User Name',joiningDate: 'Joining Date' }" filename="'GymUserExcel'" class="btn-sm btn-primary">Export Excel</button> -->
+						</div>
+						<div class="col-sm-2">
+							<button class="btn btn-default"
+								ng-click="initAddGymUser()">
+								 <span class="glyphicon glyphicon-user"></span> &nbsp;New Gym User
+							</button>
+						</div>
 					</div>
-					<div class="col-sm-4">
-						<input class="glyphicon glyphicon-search form-control" type="text" ng-model="search" placeholder="Search by UserName"></input>
-						<i class='fa fa-search' id="search"></i>
-					</div>
-					<div class="col-sm-4">
-						<button class="btn btn-default btn-sm close"
-							ng-click="initAddGymUser()">
-							 <span class="glyphicon glyphicon-user"></span> &nbsp;New Gym User
-						</button>
-					</div>
-				</div>
+				</div>	
 			</div>
+
 			<div class="panel-body">
 
 				<div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
+
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -148,8 +306,12 @@
 							<td>{{gymuser.feeDueDate | date:format: 'dd-MM-yyyy'}}</td>
 							<td ng-class="gymuser.feeStatusColor">{{gymuser.feeStatus}}</td>
 							<td><button type="button" class="btn btn-default btn-sm"
+									ng-click="initViewGymUser(gymuser)">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-sm"
 									ng-click="initEditGymUser(gymuser)">
-									<span class="glyphicon glyphicon-edit"></span>
+									<span class="glyphicon glyphicon-pencil"></span>
 								</button>
 								<button type="button" class="btn btn-default btn-sm"
 									ng-click="deleteGymUser(gymuser)">

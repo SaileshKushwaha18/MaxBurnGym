@@ -1,5 +1,6 @@
-package org.techforumist.addressbook.domain;
+package org.techforumist.maxburn.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 /**
- * @author Sarath Muraleedharan
+ * @author Sailesh
  *
  */
 @Entity
-public class AppUser implements UserDetails {
+public class AppUser implements UserDetails,Serializable {
 	/**
 	 * 
 	 */

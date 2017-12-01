@@ -1,7 +1,7 @@
-package org.techforumist.addressbook.repository;
+package org.techforumist.maxburn.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.techforumist.addressbook.domain.Address;
+import org.techforumist.maxburn.domain.Address;
 
 /**
  * @author Sarath Muraleedharan
