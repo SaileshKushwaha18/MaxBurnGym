@@ -291,9 +291,10 @@
 							<th>#</th>
 							<th ng-click="changeSorting('userName')">UserName <i class="glyphicon" ng-class="getIcon('userName')"></i></th>
 							<th ng-click="changeSorting('joiningDate')">Joining Date <i class="glyphicon" ng-class="getIcon('joiningDate')"></i></th>
-							<th ng-click="changeSorting('feeSubmitDate')">FeeSubmitDate <i class="glyphicon" ng-class="getIcon('feeSubmitDate')"></i></th>
+<!-- 							<th ng-click="changeSorting('feeSubmitDate')">FeeSubmitDate <i class="glyphicon" ng-class="getIcon('feeSubmitDate')"></i></th> -->
 							<th ng-click="changeSorting('feeDueDate')">FeeDueDate <i class="glyphicon" ng-class="getIcon('feeDueDate')"></i></th>
 							<th ng-click="changeSorting('feeStatus')">FeeStatus <i class="glyphicon" ng-class="getIcon('feeStatus')"></i></th>
+							<th>New / Old</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -302,9 +303,11 @@
 							<td>{{$index+1}}</td>
 							<td>{{gymuser.userName}}</td>
 							<td>{{gymuser.joiningDate | date:format: 'dd-MM-yyyy'}}</td>
-							<td>{{gymuser.feeSubmitDate | date:format: 'dd-MM-yyyy'}}</td>
+<!-- 							<td>{{gymuser.feeSubmitDate | date:format: 'dd-MM-yyyy'}}</td> -->
 							<td>{{gymuser.feeDueDate | date:format: 'dd-MM-yyyy'}}</td>
 							<td ng-class="gymuser.feeStatusColor">{{gymuser.feeStatus}}</td>
+							<td ng-if="gymuser.isNewUser == 1">New</td>
+							<td ng-if="gymuser.isNewUser == 0">Old</td>
 							<td><button type="button" class="btn btn-default btn-sm"
 									ng-click="initViewGymUser(gymuser)">
 									<span class="glyphicon glyphicon-eye-open"></span>

@@ -30,8 +30,8 @@ public class GymUserRestController {
 	@Autowired
 	private AddressRepository addressRepository;
 	
-	@Autowired
-	private ExerciseRepository exerciseRepository;
+//	@Autowired
+//	private ExerciseRepository exerciseRepository;
 	
 	@RequestMapping(value = "/gym-users", method = RequestMethod.GET)
 	public List<GymUser> users() {

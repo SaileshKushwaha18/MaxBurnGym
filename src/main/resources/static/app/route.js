@@ -18,15 +18,6 @@ angular.module('AddressBook').config(function($stateProvider, $urlRouterProvider
 				controller : 'LoginController'
 			}
 		}
-	}).state('login', {
-		parent : 'nav',
-		url : '/',
-		views : {
-			'content@' : {
-				templateUrl : 'app/views/login.html',
-				controller : 'LoginController'
-			}
-		}
 	}).state('users', {
 		parent : 'nav',
 		url : '/users',

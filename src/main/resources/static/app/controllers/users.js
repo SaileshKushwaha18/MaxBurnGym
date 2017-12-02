@@ -29,6 +29,7 @@ angular.module('AddressBook')
 		$scope.message='';
 		$scope.buttonText = 'Create';
 	};
+	
 	$scope.deleteUser = function(appUser) {
 		$http.delete('api/users/'+appUser.id).success(function(res) {
 			$scope.deleteMessage ="Success!";

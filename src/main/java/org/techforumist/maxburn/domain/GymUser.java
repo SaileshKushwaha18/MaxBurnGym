@@ -78,6 +78,8 @@ public class GymUser implements Serializable{
 
 	private Date packageEndDate;
 	
+	private Integer isNewUser;
+	
 	public Long getId() {
 		return id;
 	}
@@ -269,6 +271,14 @@ public class GymUser implements Serializable{
 
 	public void setPackageEndDate(Date packageEndDate) {
 		this.packageEndDate = packageEndDate;
+	}
+
+	public Integer getIsNewUser() {
+		return isNewUser;
+	}
+
+	public void setIsNewUser(Integer isNewUser) {
+		this.isNewUser = isNewUser;
 	}
 
 }

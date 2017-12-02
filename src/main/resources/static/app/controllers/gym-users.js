@@ -67,6 +67,10 @@ angular.module('AddressBook')
             		}else{
             			feeStatusColor = 'white';
             		}
+            		
+            		if(res[i].isNewUser){
+            			feeStatusColor = 'red';
+            		}
             	}
 
             	res[i].feeStatusColor = feeStatusColor;
@@ -203,9 +207,16 @@ angular.module('AddressBook')
 				}
 				
 				endDate = new Date(startDate);
-				endDate.setMonth(endDate.getMonth() + parseInt($scope.gymUser.packages) + extraPackages);
 				
+				if($scope.gymUser.isNewUser == 1){
+					endDate.setDate(endDate.getDate() + 2);
+				}else{
+					endDate.setMonth(endDate.getMonth() + parseInt($scope.gymUser.packages) + extraPackages);
+				}
+
 				$scope.gymUser.feeDueDate = endDate;
+				
+
 				if($scope.gymUser.feeStatus == 'PAID' && endDate < startDate){
 
 					$scope.gymUser.feeDueDate = endDate;
@@ -255,6 +266,14 @@ angular.module('AddressBook')
 			$scope.gymUser.feeStatusColor = 'red';	
 		}
 		
+		if(editGym){
+			$scope.gymUser.isNewUser = 0;
+			console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser);
+		}else{
+			$scope.gymUser.isNewUser = 1;
+			console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser)
+		}
+
 //		if(editGym){
 //			console.log('edit OnChangeFeeStatus :	'+editGym + '	:	feePaid	:	' + feePaid);
 //			editGymUser();
@@ -326,7 +345,7 @@ angular.module('AddressBook')
 	$scope.initAddGymUser = function() {
 
 		editGym = false;
-		$scope.gymUser =null;
+		$scope.gymUser = null;
 		$scope.gymuserForm.$setPristine();
 		$scope.message='';
 		$scope.buttonText = 'Create';
@@ -334,14 +353,35 @@ angular.module('AddressBook')
 			defaultDate();
 			console.log('initAddGymUser IF ---> scope.joiningDate	:	' + $scope.joiningDate);
 		}else{
-			var joiningDate = new Date();
 			
-			$scope.joiningDate = $filter("date")(joiningDate , 'yyyy-MM-dd');
+//			$scope.gymUser.firstName =null;
+//			$scope.gymUser.middleName =null;
+//			$scope.gymUser.lastName =null;
+//			$scope.gymUser.gender =null;
+//			$scope.gymUser.phone =null;
+//			$scope.gymUser.emailId =null;
+//			$scope.gymUser.feeStatus =null;
+//			$scope.gymUser.feeStatusColor =null;
+//			$scope.gymUser.exerciseType =null;
+//			$scope.gymUser.exerciseFee =null;
+//			$scope.gymUser.packages =null;
+//			$scope.gymUser.extraPackages =null;
+//			$scope.gymUser.totalFee =null;
+//			$scope.gymUser.submittedFee =null;
+//			$scope.gymUser.feeDiscount =null;
+//			$scope.gymUser.balanceFee =null;
+			
+			defaultDate();
+//			$scope.joiningDate = $scope.joiningDate;
+//			$scope.gymUser.dob =null;
+//			$scope.gymUser.feeSubmitDate =null;
+//			$scope.gymUser.feeDueDate =null;
 
 			console.log('editGym	:	' + editGym);
 			console.log('initAddGymUser ELSE ---> scope.joiningDate	:	' + $scope.joiningDate);
 		}
-		
+
+
 	};
 	$scope.deleteGymUser = function(gymUser) {
 		$http.delete('api/gym-users/'+gymUser.id).success(function(res) {
@@ -352,13 +392,14 @@ angular.module('AddressBook')
 		});
 	};
 	var editGymUser = function(){
-// if($scope.gymUser.feeStatus === 'PAID'){
-// $scope.gymUser.feeSubmitDate = $filter("date")(new Date() , 'yyyy-MM-dd');
-// }else{
-// $scope.gymUser.feeSubmitDate = $scope.gymUser.feeSubmitDate;
-// }
+		 if($scope.gymUser.feeStatus === 'PAID'){
+			 $scope.gymUser.feeSubmitDate = $filter("date")(new Date() , 'yyyy-MM-dd');
+		 }else{
+			 $scope.gymUser.feeSubmitDate = $scope.gymUser.feeSubmitDate;
+		 }
 		editGym = false;
-		
+
+		$scope.gymUser.isNewUser = 0;
 		console.log($scope.gymUser);
 		$http.put('api/gym-users', $scope.gymUser).success(function(res) {
 			$scope.gymUser = null;
@@ -373,9 +414,10 @@ angular.module('AddressBook')
 	var addGymUser = function(){
 		$scope.gymUser.joiningDate = new Date($scope.joiningDate);
 		$scope.gymUser.dob = new Date($scope.dob);
-		$scope.gymUser.feeSubmitDate = new Date($scope.feeSubmitDate);
+		$scope.gymUser.feeSubmitDate = '';
 		$scope.gymUser.feeDueDate = new Date($scope.feeDueDate);
-		
+
+		$scope.gymUser.isNewUser = 1;
 		$http.post('api/gym-users', $scope.gymUser).success(function(res) {
 			$scope.gymUser = null;
 			// $scope.confirmPassword = null;
@@ -393,7 +435,7 @@ angular.module('AddressBook')
 			$scope.gymUser.exercise = $scope.gymUser.exercise;
 			editGymUser();
 		}else{
-			editGym = false;
+			//editGym = false;
 			$scope.gymUser.exercise = $scope.gymUser.exercise;
 			//defaultDate();
 			addGymUser();	
