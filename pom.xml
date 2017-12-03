@@ -6,7 +6,7 @@
 	<groupId>org.techforumist.addressbook</groupId>
 	<artifactId>MaxBurnGym</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>MaxBurnGym</name>
 	<description>MaxBurnGym with angular js and spring security </description>
