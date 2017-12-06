@@ -21,8 +21,10 @@ angular.module('AddressBook')
 	var curDt = null;
 	var pkgs = null;
 	var currentdate = new Date();
+	$scope.viewButton = false;
 	
 	var initGym = function() {
+		
 		$http.get('api/gym-users').success(function(res) {
 			for (var i in res) {
 // curDt = new Date().getDate();
