@@ -356,10 +356,10 @@ angular.module('AddressBook')
 		$scope.gymuserForm.$setPristine();
 		$scope.message='';
 		$scope.buttonText = 'Create';
-		if($scope.joiningDate == undefined){
+		//if($scope.joiningDate == undefined){
 			defaultDate();
 			console.log('initAddGymUser IF ---> scope.joiningDate	:	' + $scope.joiningDate);
-		}else{
+		//}else{
 			
 //			$scope.gymUser.firstName =null;
 //			$scope.gymUser.middleName =null;
@@ -384,9 +384,9 @@ angular.module('AddressBook')
 //			$scope.gymUser.feeSubmitDate =null;
 //			$scope.gymUser.feeDueDate =null;
 
-			console.log('editGym	:	' + editGym);
-			console.log('initAddGymUser ELSE ---> scope.joiningDate	:	' + $scope.joiningDate);
-		}
+		//	console.log('editGym	:	' + editGym);
+		//	console.log('initAddGymUser ELSE ---> scope.joiningDate	:	' + $scope.joiningDate);
+		//}
 
 
 	};
