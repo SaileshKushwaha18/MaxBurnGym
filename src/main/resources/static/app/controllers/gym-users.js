@@ -216,7 +216,7 @@ angular.module('AddressBook')
 //		$scope.feeDueDate = null;
 //		$scope.dob = null;
 		if(!editGym){
-			$scope.joiningDate = new Date();
+			$scope.joiningDate = $filter("date")(new Date() , 'yyyy-MM-dd');
 			var feeSubmitDate1 = new Date();
 			feeSubmitDate1.setDate(feeSubmitDate1.getDate() + 2);
 			$scope.feeSubmitDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
