@@ -386,10 +386,10 @@ angular.module('AddressBook')
 	$scope.onChangeJoiningDueDate = function(joiningDueDate){
 		if(!editGym){
 			console.log('joiningDueDate' +joiningDueDate + 'editGym :	' +editGym);
-			$scope.joiningDate = joiningDueDate;
+			$scope.gymUser.joiningDate = joiningDueDate;
 			var joiningFeeDueDate = new Date(joiningDueDate);
 			joiningFeeDueDate.setDate(joiningFeeDueDate.getDate() + 2);
-			$scope.feeDueDate = $filter("date")(joiningFeeDueDate, 'yyyy-MM-dd');
+			$scope.gymUser.feeDueDate = $filter("date")(joiningFeeDueDate, 'yyyy-MM-dd');
 			
 			console.log('joiningFeeDueDate :' +joiningFeeDueDate);
 		}
