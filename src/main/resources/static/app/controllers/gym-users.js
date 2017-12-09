@@ -385,13 +385,16 @@ angular.module('AddressBook')
 
 	$scope.onChangeJoiningDueDate = function(joiningDueDate){
 		if(!editGym){
-			console.log('joiningDueDate' +joiningDueDate + 'editGym :	' +editGym);
-			$scope.gymUser.joiningDate = joiningDueDate;
-			var joiningFeeDueDate = new Date(joiningDueDate);
-			joiningFeeDueDate.setDate(joiningFeeDueDate.getDate() + 2);
-			$scope.gymUser.feeDueDate = $filter("date")(joiningFeeDueDate, 'yyyy-MM-dd');
 			
-			console.log('joiningFeeDueDate :' +joiningFeeDueDate);
+			if(joiningDueDate !=null){
+				console.log('joiningDueDate' +joiningDueDate + 'editGym :	' +editGym);
+				$scope.gymUser.joiningDate = joiningDueDate;
+				var joiningFeeDueDate = new Date(joiningDueDate);
+				joiningFeeDueDate.setDate(joiningFeeDueDate.getDate() + 2);
+				$scope.gymUser.feeDueDate = $filter("date")(joiningFeeDueDate, 'yyyy-MM-dd');
+				
+				console.log('joiningFeeDueDate :' +joiningFeeDueDate);
+			}
 		}
 	};
 	
