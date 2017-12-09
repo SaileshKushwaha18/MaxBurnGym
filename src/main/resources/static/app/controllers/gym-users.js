@@ -58,7 +58,7 @@ angular.module('AddressBook')
 			$scope.gymuserForm.$setPristine();
 			$scope.gymUser = null;
 			$scope.buttonText = '';
-			defaultDate();
+			//defaultDate();
 		}).error(function(error) {
 			$scope.message = error.message;
 		});
@@ -212,6 +212,9 @@ angular.module('AddressBook')
 	
 	var defaultDate = function() {
 //		console.log('editGym	defaultDate: '+editGym);
+		$scope.joiningDate = null;
+		$scope.feeDueDate = null;
+		$scope.dob = null;
 		if(!editGym){
 			$scope.joiningDate = $filter("date")(new Date() , 'yyyy-MM-dd');
 			var feeSubmitDate1 = new Date();
