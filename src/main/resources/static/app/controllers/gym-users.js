@@ -294,11 +294,12 @@ angular.module('AddressBook')
 		editGym = false;
 		$scope.isNewUserCheck = true ;
 		
-		$scope.gymUser = null;
+		
 		$scope.gymuserForm.$setPristine();
 		$scope.message='';
 		$scope.buttonText = 'Create';
-			defaultDate();
+		defaultDate();
+	//$scope.gymUser = null;
 	};
 	$scope.deleteGymUser = function(gymUser) {
 		$http.delete('api/gym-users/'+gymUser.id).success(function(res) {
