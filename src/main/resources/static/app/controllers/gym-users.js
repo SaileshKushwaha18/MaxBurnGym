@@ -212,11 +212,11 @@ angular.module('AddressBook')
 	
 	var defaultDate = function() {
 //		console.log('editGym	defaultDate: '+editGym);
-		$scope.joiningDate = null;
-		$scope.feeDueDate = null;
-		$scope.dob = null;
+//		$scope.joiningDate = null;
+//		$scope.feeDueDate = null;
+//		$scope.dob = null;
 		if(!editGym){
-			$scope.joiningDate = $filter("date")(new Date() , 'yyyy-MM-dd');
+			$scope.joiningDate = new Date();
 			var feeSubmitDate1 = new Date();
 			feeSubmitDate1.setDate(feeSubmitDate1.getDate() + 2);
 			$scope.feeSubmitDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
