@@ -58,6 +58,7 @@ angular.module('AddressBook')
 			$scope.gymuserForm.$setPristine();
 			$scope.gymUser = null;
 			$scope.buttonText = '';
+			defaultDate();
 		}).error(function(error) {
 			$scope.message = error.message;
 		});
