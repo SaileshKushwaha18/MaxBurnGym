@@ -211,15 +211,18 @@ angular.module('AddressBook')
 	
 	var defaultDate = function() {
 //		console.log('editGym	defaultDate: '+editGym);
-
-		var joiningDate = $filter("date")(new Date() , 'yyyy-MM-dd');
-		$scope.joiningDate = joiningDate;
-		var feeSubmitDate1 = new Date();
-		feeSubmitDate1.setDate(feeSubmitDate1.getDate() + 2);
-		$scope.feeSubmitDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
-		$scope.feeDueDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
-		$scope.dob = $filter("date")(new Date() , 'yyyy-MM-dd');
-
+		if(!editGym){
+			var joiningDate = $filter("date")(new Date() , 'yyyy-MM-dd');
+			$scope.joiningDate = joiningDate;
+			var feeSubmitDate1 = new Date();
+			feeSubmitDate1.setDate(feeSubmitDate1.getDate() + 2);
+			$scope.feeSubmitDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
+			$scope.feeDueDate = $filter("date")(feeSubmitDate1, 'yyyy-MM-dd');
+			$scope.dob = $filter("date")(new Date() , 'yyyy-MM-dd');
+			console.log('This is add');
+		}else{
+			console.log('This is edit');
+		}
 	}; 
 	
 	$scope.onChangeFeeStatus = function(feePaid){
@@ -291,6 +294,7 @@ angular.module('AddressBook')
 	
 	$scope.initAddGymUser = function() {
 
+		defaultDate();
 		editGym = false;
 		$scope.isNewUserCheck = true ;
 		
@@ -298,8 +302,7 @@ angular.module('AddressBook')
 		$scope.gymuserForm.$setPristine();
 		$scope.message='';
 		$scope.buttonText = 'Create';
-		defaultDate();
-	//$scope.gymUser = null;
+		//$scope.gymUser = null;
 	};
 	$scope.deleteGymUser = function(gymUser) {
 		$http.delete('api/gym-users/'+gymUser.id).success(function(res) {
