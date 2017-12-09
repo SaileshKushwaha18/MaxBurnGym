@@ -224,7 +224,7 @@ angular.module('AddressBook')
 			$scope.dob = $filter("date")(new Date() , 'yyyy-MM-dd');
 			console.log('This is add');
 			console.log('test' + $scope.joiningDate);
-			console.log('DATE>NOW'+$filter("date")(Date.now , 'yyyy-MM-dd'));
+			console.log('DATE>NOW'+$filter("date")(Date.now() , 'yyyy-MM-dd'));
 		}else{
 			console.log('This is edit');
 		}
