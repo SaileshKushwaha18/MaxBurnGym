@@ -28,6 +28,25 @@
 								class="form-control" ng-model="exercise.fee"
 								id="fee" name="fee"> 
 							</div>
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': exerciseForm.packages.$invalid && exerciseForm.packages.$dirty }">
+								<label for="packages">Package:</label> <select required 
+									class="form-control" ng-model="exercise.packages" id="packages"
+									name="packages">
+									<option value='1'>1</option>
+									<option value='2'>2</option>
+									<option value='3'>3</option>
+									<option value='4'>4</option>									
+									<option value='5'>5</option>
+									<option value='6'>6</option>
+									<option value='7'>7</option>
+									<option value='8'>8</option>
+									<option value='9'>9</option>
+									<option value='10'>10</option>
+									<option value='11'>11</option>
+									<option value='12'>12</option>
+								</select>
+							</div>
 						</div>
 						<div class="form-group col-md-4">
 							<button type="submit" class="btn btn-default"
@@ -52,6 +71,9 @@
 					</div>
 					<div class="form-group col-md-4" >
 						<label for="fee">ExerciseFee:</label> {{exercise.fee}}
+					</div>
+					<div class="form-group col-md-4" >
+						<label for="packages">Package:</label> {{exercise.packages}}
 					</div>
 				</div>
 			</div>
@@ -93,6 +115,7 @@
 <!-- 									<th ng-click="changeSorting('submittedFee')">SubmittedFee <i class="glyphicon" ng-class="getIcon('submittedFee')"></i></th> -->
 <!-- 									<th ng-click="changeSorting('balanceFee')">BalanceFee <i class="glyphicon" ng-class="getIcon('balanceFee')"></i></th> -->
 <!-- 									<th ng-click="changeSorting('feeDiscount')">FeeDiscount <i class="glyphicon" ng-class="getIcon('feeDiscount')"></i></th> -->
+									<th>Package</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -101,6 +124,7 @@
 									<td>{{$index+1}}</td>
 									<td>{{exercise.type}}</td>
 									<td>{{exercise.fee}}</td>
+									<td>{{exercise.packages}}</td>
 <!-- 									<td>{{exercise.totalFee}}</td> -->
 <!-- 									<td>{{exercise.packages}}</td> -->
 <!-- 									<td>{{exercise.extraPackages}}</td> -->

@@ -25,16 +25,6 @@ public class Exercise implements Serializable{
 	
 	private String packages;   // Defines duration of package
 	
-	private String extraPackages;   // Defines extra duration on the top of package.
-	
-	private String totalFee;
-	
-	private String submittedFee;
-	
-	private String balanceFee;
-	
-	private String feeDiscount; // Defines Discount given to the user.
-	
 	public Long getId() {
 		return id;
 	}
@@ -65,46 +55,6 @@ public class Exercise implements Serializable{
 
 	public void setPackages(String packages) {
 		this.packages = packages;
-	}
-
-	public String getExtraPackages() {
-		return extraPackages;
-	}
-
-	public void setExtraPackages(String extraPackages) {
-		this.extraPackages = extraPackages;
-	}
-
-	public String getTotalFee() {
-		return totalFee;
-	}
-
-	public void setTotalFee(String totalFee) {
-		this.totalFee = totalFee;
-	}
-
-	public String getSubmittedFee() {
-		return submittedFee;
-	}
-
-	public void setSubmittedFee(String submittedFee) {
-		this.submittedFee = submittedFee;
-	}
-
-	public String getBalanceFee() {
-		return balanceFee;
-	}
-
-	public void setBalanceFee(String balanceFee) {
-		this.balanceFee = balanceFee;
-	}
-
-	public String getFeeDiscount() {
-		return feeDiscount;
-	}
-
-	public void setFeeDiscount(String feeDiscount) {
-		this.feeDiscount = feeDiscount;
 	}
 
 }
