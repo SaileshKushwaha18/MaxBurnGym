@@ -85,6 +85,8 @@ public class GymUser implements Serializable{
 	private Integer height;
 
 	private Integer weight;
+
+	private String alternateNumber;
 	
 	public Long getId() {
 		return id;
@@ -309,6 +311,13 @@ public class GymUser implements Serializable{
 
 	public void setWeight(Integer weight) {
 		this.weight = weight;
+	}
+	public String getAlternateNumber() {
+		return alternateNumber;
+	}
+
+	public void setAlternateNumber(String alternateNumber) {
+		this.alternateNumber = alternateNumber;
 	}
 
 }

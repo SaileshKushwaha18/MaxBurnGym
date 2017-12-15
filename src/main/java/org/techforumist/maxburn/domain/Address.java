@@ -39,7 +39,6 @@ public class Address implements Serializable{
 	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
 	private List<GymUser> gymUser;
 	
-	private String alternateNumber;
 	
 	public Long getId() {
 		return id;
@@ -81,12 +80,5 @@ public class Address implements Serializable{
 		this.gymUser = gymUser;
 	}
 
-	public String getAlternateNumber() {
-		return alternateNumber;
-	}
-
-	public void setAlternateNumber(String alternateNumber) {
-		this.alternateNumber = alternateNumber;
-	}
 
 }

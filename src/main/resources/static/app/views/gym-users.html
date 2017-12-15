@@ -52,7 +52,7 @@
 							</div>
 							<div class="form-group col-md-4"
 								ng-class="{ 'has-error': gymuserForm.joiningDate.$invalid && gymuserForm.joiningDate.$dirty}">
-								<label for="joiningDate">JoiningDate:</label> <input type="date" value ="{{joiningDate}}" ng-change="onChangeJoiningDueDate(gymUser.joiningDate);"
+								<label for="joiningDate">JoiningDate:</label> <input type="date" value ="{{joiningDate}}" ng-change="onChangeJoiningDueDate(gymUser.joiningDate)"
 									class="form-control" ng-model="gymUser.joiningDate"
 									id="joiningDate" name="joiningDate">
 									
@@ -82,7 +82,13 @@
 								<label for="phone">MobileNo:</label> <input type="tel" ng-minlength="10" ng-maxlength="10"
 									 required class="form-control" ng-model="gymUser.phone"
 									id="phone" name="phone">
-							</div>			
+							</div>	
+							<div class="form-group col-md-4"
+								ng-class="{ 'has-error': gymuserForm.alternateNumber.$invalid && gymuserForm.alternateNumber.$dirty }">
+								<label for="alternateNumber">AlternateNumber:</label> <input type="tel" ng-minlength="10" ng-maxlength="10"
+									 required class="form-control" ng-model="gymUser.alternateNumber"
+									id="alternateNumber" name="alternateNumber">
+							</div>		
 							<div class="form-group col-md-4"
 								ng-class="{ 'has-error': gymuserForm.feeStatus.$invalid && gymuserForm.feeStatus.$dirty }">
 								<label for="feeStatus">FeeStatus:</label> <select required ng-change="onChangeFeeStatus(gymUser.feeStatus);"
@@ -136,12 +142,12 @@
 								class="form-control" ng-model="gymUser.packages" ng-change="gymFeeCalculation(gymUser.exerciseFee);"
 								id="packages" name="packages"> 
 							</div>
-							<div class="form-group col-md-4"  
-								ng-class="{ 'has-error': gymuserForm.extraPackages.$invalid && gymuserForm.extraPackages.$dirty }">
-								<label for="extraPackages">ExtraPackage:</label><input type="number" required ng-min="0" ng-max="6" ng-maxlength="2"
-								class="form-control" ng-model="gymUser.extraPackages"  ng-change="gymFeeCalculation(gymUser.exerciseFee)"
-								id="extraPackages" name="extraPackages"> 
-							</div>
+<!-- 							<div class="form-group col-md-4"   -->
+<!-- 								ng-class="{ 'has-error': gymuserForm.extraPackages.$invalid && gymuserForm.extraPackages.$dirty }"> -->
+<!-- 								<label for="extraPackages">ExtraPackage:</label><input type="number" required ng-min="0" ng-max="6" ng-maxlength="2" -->
+<!-- 								class="form-control" ng-model="gymUser.extraPackages"  ng-change="gymFeeCalculation(gymUser.exerciseFee)" -->
+<!-- 								id="extraPackages" name="extraPackages">  -->
+<!-- 							</div> -->
 							<div class="form-group col-md-4"  
 								ng-class="{ 'has-error': gymuserForm.totalFee.$invalid && gymuserForm.totalFee.$dirty }">
 								<label for="totalFee">TotalFee:</label><input type="number" required ng-disabled="true"
@@ -225,6 +231,9 @@
 						</div>	
 						<div class="form-group col-md-4">
 							<label for="phone">MobileNo:</label> {{gymUser.phone}}
+						</div>
+						<div class="form-group col-md-4">
+							<label for="alternateNumber">AlternateNo:</label> {{gymUser.alternateNumber}}
 						</div>			
 						<div class="form-group col-md-4">
 							<label for="role">FeeStatus:</label> <span class="{{gymUser.feeStatusColor}}">{{gymUser.feeStatus}}</span>
@@ -259,9 +268,9 @@
 						<div class="form-group col-md-4">
 							<label for="packages">Package:</label> {{gymUser.packages}}
 						</div>
-						<div class="form-group col-md-4">
-							<label for="extraPackages">ExtraPackage:</label> {{gymUser.extraPackages}}
-						</div>
+<!-- 						<div class="form-group col-md-4"> -->
+<!-- 							<label for="extraPackages">ExtraPackage:</label> {{gymUser.extraPackages}} -->
+<!-- 						</div> -->
 						<div class="form-group col-md-4">
 							<label for="totalFee">TotalFee:</label> {{gymUser.totalFee}}
 						</div>

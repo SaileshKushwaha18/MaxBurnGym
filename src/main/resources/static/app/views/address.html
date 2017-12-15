@@ -22,12 +22,7 @@
 							<textarea required class="form-control"
 								ng-model="address.address.address" id="address" name="address"></textarea>
 						</div>
-						<div class="form-group"
-							ng-class="{ 'has-error': addressForm.phone.$invalid && addressForm.phone.$dirty }">
-							<label for="phone">MobileNo:</label> <input type="tel" ng-minlength="10" ng-maxlength="10"
-								 required class="form-control" ng-model="address.address.alternateNumber"
-								id="address.alternateNumber" name="address.alternateNumber">
-						</div>
+
 						<button type="submit" class="btn btn-default"
 							ng-disabled="addressForm.$invalid">{{buttonText}}</button>
 
