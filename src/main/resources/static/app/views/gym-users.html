@@ -242,7 +242,7 @@
 							<label for="feeStatusColor">FeeStatusColor:</label> {{gymUser.feeStatusColor}}
 						</div>
 						<div class="form-group col-md-4" >
-							<label for="height">Height (in cms):</label> {{gymUser.height}}
+							<label for="height">Height (in Feet):</label> {{gymUser.height * 0.032808}}
 						</div>
 						<div class="form-group col-md-4" >
 							<label for="weigth">Weight (in Kgs):</label> {{gymUser.weight}}
@@ -306,9 +306,9 @@
 						<div class="col-sm-4">
 							<input class="glyphicon glyphicon-search form-control" type="text" ng-model="search" placeholder="Search by UserName"></input>
 							<i class='fa fa-search' id="search"></i>
-						</div>
+						</div> 
 						<div class="col-sm-1">
-<!-- 							<button class="btn btn-default" ng-json-export-excel data="gymusers" report-fields="{id: 'UserID', userName: 'User Name',joiningDate: 'Joining Date' }" filename="'GymUserExcel'" class="btn-sm btn-primary">Export Excel</button> -->
+							<button class="btn btn-default" ng-json-export-excel data="gymusers" report-fields="{id: 'UserID', firstName: 'First Name',joiningDate: 'Joining Date' }" filename="'GymUserExcel'" class="btn-sm btn-primary">Export Excel</button>
 						</div>
 						<div class="col-sm-2">
 							<button class="btn btn-default"

@@ -16,7 +16,7 @@ angular.module('AddressBook')
 	var pkgs = null;
 	var currentdate = new Date();
 	$scope.viewButton = false;
-	
+	var gymUsersExcel = [];
 	var initGym = function() {
 		
 		$http.get('api/gym-users').success(function(res) {
@@ -44,7 +44,6 @@ angular.module('AddressBook')
             	}else{
             		res[i].feeStatus = 'PAID';
             	}
-            	
 			}
 			$scope.gymusers = res;
 			$scope.gymuserForm.$setPristine();
