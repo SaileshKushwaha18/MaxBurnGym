@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -48,9 +46,9 @@ public class GymUser implements Serializable{
 	@SuppressWarnings("unused")
 	private String userName;
 
-	@OneToOne
-	@JoinColumn(name = "addressId")
-	private Address address;
+//	@OneToOne
+//	@JoinColumn(name = "addressId")
+	private String address;
 
 	@ColumnDefault("'UNPAID'")
 	private String feeStatus;
@@ -185,11 +183,11 @@ public class GymUser implements Serializable{
 		this.userName = this.getFirstName() + ',' + this.getLastName();
 	}
 
-	public Address getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 

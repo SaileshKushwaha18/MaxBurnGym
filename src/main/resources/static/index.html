@@ -21,6 +21,10 @@
 	overflow-y: auto;
 }
 
+.table > tbody > tr:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}
 </style>
 <body ng-app="AddressBook"  ng-style="{'background-image':'url(gym.jpg)', 'background-repeat': 'repeat' ,'background-size': '100% 800px' }">
 
@@ -38,7 +42,11 @@
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-sanitize.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/ng-csv/0.3.3/ng-csv.min.js"></script>
+		
 	<!-- Including jquery and twitter bootstrap -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -64,7 +72,6 @@
 	<script type="text/javascript" src="app/controllers/users.js"></script>
 	<script type="text/javascript" src="app/controllers/gym-users.js"></script>
 	<script type="text/javascript" src="app/controllers/exercise.js"></script>
-	<script type="text/javascript" src="app/controllers/address.js"></script>
 	<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
 	<script type="text/javascript" src="app/controllers/access-denied.js"></script>
 	<script type="text/javascript" src="app/controllers/register.js"></script>

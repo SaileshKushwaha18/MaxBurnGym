@@ -3,15 +3,12 @@ package org.techforumist.maxburn.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,9 +39,9 @@ public class AppUser implements UserDetails,Serializable {
 	private String password;
 	private String role;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-	private List<Address> addresses;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+//	private List<Address> addresses;
 
 	public Long getId() {
 		return id;
@@ -86,13 +83,13 @@ public class AppUser implements UserDetails,Serializable {
 		this.role = role;
 	}
 
-	public List<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
-	}
+//	public List<Address> getAddresses() {
+//		return addresses;
+//	}
+//
+//	public void setAddresses(List<Address> addresses) {
+//		this.addresses = addresses;
+//	}
 
 	@JsonIgnore
 	@Override

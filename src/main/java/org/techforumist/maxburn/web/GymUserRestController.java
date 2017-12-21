@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.techforumist.maxburn.domain.GymUser;
-import org.techforumist.maxburn.repository.AddressRepository;
-import org.techforumist.maxburn.repository.ExerciseRepository;
 import org.techforumist.maxburn.repository.GymUserRepository;
 
 /**
@@ -26,12 +24,6 @@ import org.techforumist.maxburn.repository.GymUserRepository;
 public class GymUserRestController {
 	@Autowired
 	private GymUserRepository gymUserRepository;
-
-	@Autowired
-	private AddressRepository addressRepository;
-	
-//	@Autowired
-//	private ExerciseRepository exerciseRepository;
 	
 	@RequestMapping(value = "/gym-users", method = RequestMethod.GET)
 	public List<GymUser> users() {
@@ -72,12 +64,6 @@ public class GymUserRestController {
 			throw new RuntimeException("Username already exist");
 		}
 		
-		if(gymUser.getAddress() !=null){
-			gymUser.setAddress(addressRepository.save(gymUser.getAddress()));
-		}
-//		if(gymUser.getExercise() !=null){
-//			System.out.println("the value of ExcerciseID"+ gymUser.getExercise().getId());
-//		}
 		
 		return new ResponseEntity<GymUser>(gymUserRepository.save(gymUser), HttpStatus.CREATED);
 	}
@@ -89,13 +75,6 @@ public class GymUserRestController {
 				&& gymUserRepository.findOneByUserName(gymUser.getUserName()).getId() != gymUser.getId()) {
 			throw new RuntimeException("Username already exist");
 		}
-		
-		if(gymUser.getAddress() !=null){
-			gymUser.setAddress(addressRepository.save(gymUser.getAddress()));
-		}
-//		if(gymUser.getExercise() !=null){
-//			gymUser.setExercise(exerciseRepository.save(gymUser.getExercise()));
-//		}
 		return gymUserRepository.save(gymUser);
 	}
 

@@ -54,15 +54,6 @@ angular.module('AddressBook').config(function($stateProvider, $urlRouterProvider
 				controller : 'ExerciseController',
 			}
 		}
-	}).state('address', {
-		parent : 'nav',
-		url : '/address',
-		views : {
-			'content@' : {
-				templateUrl : 'app/views/address.html',
-				controller : 'AddressController'
-			}
-		}
 	}).state('page-not-found', {
 		parent : 'nav',
 		url : '/page-not-found',
