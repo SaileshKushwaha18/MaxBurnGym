@@ -2,7 +2,7 @@ angular.module('AddressBook')
 // Creating the Angular Controller
 .controller('ExerciseController', function($http, $scope, $timeout, $filter , AuthService) {
 	var editExer = false;
-	$scope.buttonText = 'Create';
+	$scope.buttonText = '';
 	$scope.message='';
 	$scope.user = AuthService.user;
 	var initExercise = function() {
