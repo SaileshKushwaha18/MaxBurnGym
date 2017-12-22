@@ -251,9 +251,9 @@ angular.module('AddressBook')
 //		}
 		if(($scope.joiningDate !=null && $scope.gymUser.packages !=null) || $scope.gymUser.joiningDate !=null ){
 			if($scope.gymUser.joiningDate != undefined && $scope.gymUser.joiningDate != null){ 
-				console.log('line 250===========================>');
+				//console.log('line 250===========================>');
 				if($scope.gymUser.feeStatus == 'PAID'){
-					startDate = new Date();
+					startDate = new Date($scope.gymUser.feeDueDate);
 				}
 				
 				if($scope.gymUser.feeStatus == 'UNPAID'){
@@ -280,7 +280,7 @@ angular.module('AddressBook')
 				
 				$scope.feeDueDate = $scope.gymUser.feeDueDate;
 			}else{
-				console.log('line 277===========================>');
+				//console.log('line 277===========================>');
 				startDate = new Date($scope.joiningDate);
 				endDate = new Date(startDate);
 				//endDate.setMonth(endDate.getMonth() + parseInt($scope.gymUser.packages) + extraPackages);
@@ -306,10 +306,10 @@ angular.module('AddressBook')
 				$scope.gymUser.feeStatusColor = 'red';
 			}
 			
-		 console.log('packageStartDate : '+$scope.gymUser.packageStartDate);
-		 console.log('packageEndDate : '+$scope.gymUser.packageEndDate);
-		 console.log('packages : '+$scope.gymUser.packages);
-		 console.log('feeDueDate : '+$scope.feeDueDate);
+//		 console.log('packageStartDate : '+$scope.gymUser.packageStartDate);
+//		 console.log('packageEndDate : '+$scope.gymUser.packageEndDate);
+//		 console.log('packages : '+$scope.gymUser.packages);
+//		 console.log('feeDueDate : '+$scope.feeDueDate);
 		}
 	};
 	
@@ -326,10 +326,10 @@ angular.module('AddressBook')
 		
 		if(editGym){
 			$scope.gymUser.isNewUser = 0;
-			console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser);
+			//console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser);
 		}else{
 			$scope.gymUser.isNewUser = 1;
-			console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser)
+			//console.log('EDIT :' + editGym + 'isNewUser' + $scope.gymUser.isNewUser)
 		}
 
 //		if(editGym){
@@ -351,7 +351,7 @@ angular.module('AddressBook')
 		
 		//if($scope.joiningDate == undefined){
 			defaultDate();
-			console.log('initAddGymUser IF ---> scope.joiningDate	:	' + $scope.joiningDate);
+			//console.log('initAddGymUser IF ---> scope.joiningDate	:	' + $scope.joiningDate);
 			
 			$scope.joiningDate = $scope.joiningDate;
 			$scope.gymuserForm.$setPristine();
@@ -437,11 +437,11 @@ angular.module('AddressBook')
 		
 		if($scope.gymUser.dob != null){
 			$scope.gymUser.dob = $scope.gymUser.dob;
-			console.log('addGymUser dob 1==============>' +$scope.gymUser.dob);
+			//console.log('addGymUser dob 1==============>' +$scope.gymUser.dob);
 		}else{
 
 			$scope.gymUser.dob = new Date($scope.dob);
-			console.log('addGymUser dob 2==============>' +$scope.gymUser.dob);
+			//console.log('addGymUser dob 2==============>' +$scope.gymUser.dob);
 		}
 	
 		console.log($scope.gymUser);
